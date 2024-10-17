@@ -1,0 +1,13 @@
+Classwork: Confidence Interval
+    1. a. Download the data AAPL.csv. Treat the data as population.
+    b. Compute the population mean of the “Closing cost”
+    c. Take a random sample of 60.
+    d. Find the 95% CI for the mean of the “Closing cost”. Interpret your CI based
+    on the data.
+    e. Verify that the population mean is within the range of the 95% CI.
+2. a. Download the data emails.csv. Treat the data as population.
+    f. Compute the proportion of the SPAMS.
+    g. Take a random sample of 70, 100, 200.
+    h. Find the 95% CI for the proportion of the “SPAMS”. Interpret your CI based
+    on the data and compare based on different sizes of the sample.
+    i. Verify that the population Proportion is within the range of 95% CI.
