@@ -1,0 +1,16 @@
+HORMONE.DOC
+Variable Column Description/Code
+---------------------------------------------------------------------------
+ID 4-5 ID
+Bilsecpr 9-14 Biliary secretion-pre
+Bilphpr 18-23 Biliary pH-pre
+Pansecpr 26-32 Pancreatic secretion-pre
+Panphpr 37-41 Pancreatic pH-pre
+Dose 46-50 Dose
+Bilsecpt 53-59 Biliary secretion-post
+Bilphpt 64-68 Biliary pH-post
+Pansecpt 70-75 Pancreatic secretion-post
+Panphpt 79-84 Pancreatic pH-post
+Hormone 90 Hormone 1=SAL/2=APP/3=CCK/4=SEC/5=VIP
+--------------------------------------------------------------------------
+

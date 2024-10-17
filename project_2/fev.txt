@@ -1,0 +1,12 @@
+FEV.DOC
+Variable Column Description Format or Code
+----------------------------------------------------------
+Id 1-5 ID number
+Age 7-8 Age (yrs)
+FEV 10-15 FEV (liters) X.XXXX
+Hgt 17-20 Height (inches) XX.X
+Sex 22 Sex 0=female/1=male
+Smoke 24 Smoking Status 0=non-current smoker/
+1=current smoker
+----------------------------------------------------------
+
