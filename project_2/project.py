@@ -4,6 +4,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import scipy.stats as stats
 
+pd.set_option('display.max_columns', None)  # Show all columns
+pd.set_option('display.max_rows', None)     # Show all rows
+
 data = pd.read_csv("./FEV-1.csv")
 print("Stats on the data:\n", data.drop(columns="Id").describe())
 print()
@@ -45,21 +48,6 @@ cinterval = stats.t.interval(alpha=0.95, df=len(data)-1, loc=np.mean(boys_15_19[
 print("CI for boys aged 15-19:", cinterval)
 print("Actual mean:", np.mean(boys_15_19["FEV"]))
 
-###### SMOKING STATUS
-
-boys_smokers = boys_data[boys_data["Smoke"] == 1]
-boys_nonsmokers = boys_data[boys_data["Smoke"] == 0]
-
-# Boys smokers
-cinterval = stats.t.interval(alpha=0.95, df=len(data)-1, loc=np.mean(boys_smokers["FEV"]), scale=stats.sem(boys_smokers["FEV"]))
-print("CI for boy smokers:", cinterval)
-print("Actual mean:", np.mean(boys_smokers["FEV"]))
-
-# Boys nonsmokers
-
-cinterval = stats.t.interval(alpha=0.95, df=len(data)-1, loc=np.mean(boys_nonsmokers["FEV"]), scale=stats.sem(boys_nonsmokers["FEV"]))
-print("CI for boys nonsmokers:", cinterval)
-print("Actual mean:", np.mean(boys_nonsmokers["FEV"]))
 
 ################# GIRLS ###################
 ########### AGE ########
@@ -83,20 +71,73 @@ cinterval = stats.t.interval(alpha=0.95, df=len(data)-1, loc=np.mean(girls_15_19
 print("CI for girls aged 15-19:", cinterval)
 print("Actual mean:", np.mean(girls_15_19["FEV"]))
 
-######## SMOKING STATUS #############
+###### SMOKING STATUS
 
-girls_smokers = girls_data[girls_data["Smoke"] == 1]
-girls_nonsmokers = girls_data[girls_data["Smoke"] == 0]
+##### SMOKERS
+boys_smokers_10_14 = boys_10_14[boys_10_14['Smoke']== 1]
+boys_smokers_15_19 = boys_15_19[boys_15_19['Smoke']== 1]
+girls_smokers_10_14 = girls_10_14[girls_10_14['Smoke']== 1]
+girls_smokers_15_19 = girls_15_19[girls_15_19['Smoke']== 1]
 
-# Girls smokers
-cinterval = stats.t.interval(alpha=0.95, df=len(data)-1, loc=np.mean(girls_smokers["FEV"]), scale=stats.sem(girls_smokers["FEV"]))
-print("CI for girl smokers:", cinterval)
-print("Actual mean:", np.mean(girls_smokers["FEV"]))
 
-# Girls nonsmokers
+##### NON SMOKERS
+boys_nonsmokers_10_14 = boys_10_14[boys_10_14['Smoke']== 0]
+boys_nonsmokers_15_19 = boys_15_19[boys_15_19['Smoke']== 0]
+girls_nonsmokers_10_14 = girls_10_14[girls_10_14['Smoke']== 0]
+girls_nonsmokers_15_19 = girls_15_19[girls_15_19['Smoke']== 0]
 
-cinterval = stats.t.interval(alpha=0.95, df=len(data)-1, loc=np.mean(girls_nonsmokers["FEV"]), scale=stats.sem(girls_nonsmokers["FEV"]))
-print("CI for girls nonsmokers:", cinterval)
-print("Actual mean:", np.mean(girls_nonsmokers["FEV"]))
+cinterval = stats.t.interval(alpha=0.95, df=len(data)-1, loc=np.mean(boys_smokers_10_14["FEV"]), scale=stats.sem(boys_smokers_10_14["FEV"]))
+print("CI for boy smokers 10-14:", cinterval)
+print("Actual mean:", np.mean(boys_smokers_10_14["FEV"]))
+
+cinterval = stats.t.interval(alpha=0.95, df=len(data)-1, loc=np.mean(boys_smokers_15_19["FEV"]), scale=stats.sem(boys_smokers_15_19["FEV"]))
+print("CI for boy smokers 15-19:", cinterval)
+print("Actual mean:", np.mean(boys_smokers_15_19["FEV"]))
+
+cinterval = stats.t.interval(alpha=0.95, df=len(data)-1, loc=np.mean(girls_smokers_10_14["FEV"]), scale=stats.sem(girls_smokers_10_14["FEV"]))
+print("CI for girl smokers 10-14:", cinterval)
+print("Actual mean:", np.mean(girls_smokers_10_14["FEV"]))
+
+cinterval = stats.t.interval(alpha=0.95, df=len(data)-1, loc=np.mean(girls_smokers_15_19["FEV"]), scale=stats.sem(girls_smokers_15_19["FEV"]))
+print("CI for girl smokers 15-19:", cinterval)
+print("Actual mean:", np.mean(girls_smokers_15_19["FEV"]))
+
+cinterval = stats.t.interval(alpha=0.95, df=len(data)-1, loc=np.mean(boys_nonsmokers_10_14["FEV"]), scale=stats.sem(boys_nonsmokers_10_14["FEV"]))
+print("CI for boy nonsmokers 10-14:", cinterval)
+print("Actual mean:", np.mean(boys_nonsmokers_10_14["FEV"]))
+
+cinterval = stats.t.interval(alpha=0.95, df=len(data)-1, loc=np.mean(boys_nonsmokers_15_19["FEV"]), scale=stats.sem(boys_nonsmokers_15_19["FEV"]))
+print("CI for boy nonsmokers 15-19:", cinterval)
+print("Actual mean:", np.mean(boys_nonsmokers_15_19["FEV"]))
+
+cinterval = stats.t.interval(alpha=0.95, df=len(data)-1, loc=np.mean(girls_nonsmokers_10_14["FEV"]), scale=stats.sem(girls_nonsmokers_10_14["FEV"]))
+print("CI for girl nonsmokers 10-14:", cinterval)
+print("Actual mean:", np.mean(girls_nonsmokers_10_14["FEV"]))
+
+cinterval = stats.t.interval(alpha=0.95, df=len(data)-1, loc=np.mean(girls_nonsmokers_15_19["FEV"]), scale=stats.sem(girls_nonsmokers_15_19["FEV"]))
+print("CI for girl nonsmokers 15-19:", cinterval)
+print("Actual mean:", np.mean(girls_nonsmokers_15_19["FEV"]))
+
+
+###################################################### HORMONES ############################################################
+###################################################### HORMONES ############################################################
+###################################################### HORMONES ############################################################
+###################################################### HORMONES ############################################################
+###################################################### HORMONES ############################################################
+###################################################### HORMONES ############################################################
+
+# Load the data
+df = pd.read_csv('HORMONE.csv')
+
+hormone_group = df.groupby("Hormone")
+sal = hormone_group.get_group(1)
+app = hormone_group.get_group(2)
+cck = hormone_group.get_group(3)
+sec = hormone_group.get_group(4)
+vip = hormone_group.get_group(5)
+
+
+print("1=SAL/2=APP/3=CCK/4=SEC/5=VIP")
+print(hormone_group.mean())
 
 
