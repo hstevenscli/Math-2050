@@ -11,7 +11,6 @@ data = pd.read_csv("./FEV-1.csv")
 print("Stats on the data:\n", data.drop(columns="Id").describe())
 print()
 
-
 bins = [0,4,9,14,19]
 labels = ['3-4', '5-9', '10-14', '15-19']
 
@@ -141,3 +140,25 @@ print("1=SAL/2=APP/3=CCK/4=SEC/5=VIP")
 print(hormone_group.mean())
 
 
+
+# Separate the hormone group (Hormone != 1) and placebo group (Hormone == 1)
+placebo = df[df['Hormone'] == 1]
+hormone = df[df['Hormone'] != 1]
+
+# Perform t-test for Bilsecpr (biliary secretion)
+t_stat_bilsecpr, p_value_bilsecpr = stats.ttest_ind(placebo['Bilsecpr'], hormone['Bilsecpr'], equal_var=False)
+
+# Perform t-test for Bilphpr (biliary pH)
+t_stat_bilphpr, p_value_bilphpr = stats.ttest_ind(placebo['Bilphpr'], hormone['Bilphpr'], equal_var=False)
+
+print(f"Bilsecpr P-value: {p_value_bilsecpr}")
+print(f"Bilphpr P-value: {p_value_bilphpr}")
+
+
+t_stat_pancsecpr, p_value_pancsecpr = stats.ttest_ind(placebo['Pansecpr'], hormone['Pansecpr'], equal_var=False)
+
+# Perform t-test for Bilphpr (biliary pH)
+t_stat_panphpr, p_value_panphpr = stats.ttest_ind(placebo['Panphpr'], hormone['Panphpr'], equal_var=False)
+
+print(f"Pansecpr P-value: {p_value_pancsecpr}")
+print(f"Panphpr P-value: {p_value_panphpr}")
